@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstract;
+using Business.Concrete;
+using Common.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,8 +30,10 @@ namespace Project.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration["DefaultConnection"];
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IUserService, UserManager>();
+
+            services.AddDbContext<UserContext>();
             services.AddControllers();
         }
 

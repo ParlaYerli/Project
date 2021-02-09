@@ -14,6 +14,6 @@ namespace DataAccess.Concrete
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=UserDB; Trusted_Connection=true");
         }
-
+       
     }
 }

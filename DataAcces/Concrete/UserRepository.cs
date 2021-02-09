@@ -1,4 +1,5 @@
 ﻿
+using Common.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Entities;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Concrete
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : EfEntityRepositoryBase<User, UserContext>, IUserRepository
     {
     }
 }
